@@ -36,7 +36,7 @@ public class DeliveriesController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/deliveries")
     public Map<String, List<Document>> customerInformation(@RequestBody Map<String, Object> payload) {
-        List<Document> deliveriesByParamAndIds = this.deliveryService.getDeliveriesByParamAndIds(payload);
+        List<Document> deliveriesByParamAndIds = this.deliveryService.getDeliveriesByIds(payload);
 
         return  Collections.singletonMap("Invoices",deliveriesByParamAndIds);
     }

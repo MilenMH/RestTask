@@ -12,5 +12,5 @@ public interface DeliveryService {
 
     List<Document> getAll();
 
-    List<Document> getDeliveriesByParamAndIds(Map<String, Object> payload);
+    List<Document> getDeliveriesByIds(Map<String, Object> payload);
 }
