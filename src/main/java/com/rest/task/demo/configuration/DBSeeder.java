@@ -1,4 +1,4 @@
-package com.rest.task.demo.conf;
+package com.rest.task.demo.configuration;
 
 import com.rest.task.demo.entities.core.Document;
 import com.rest.task.demo.entities.core.Item;

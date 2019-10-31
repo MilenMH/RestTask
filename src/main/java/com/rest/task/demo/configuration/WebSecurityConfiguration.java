@@ -1,4 +1,4 @@
-package com.rest.task.demo.conf;
+package com.rest.task.demo.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
