@@ -5,8 +5,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Created by Milen on 28.10.2019 г..
@@ -53,7 +53,7 @@ public class Document extends AuditModel {
             name = "document_item",
             joinColumns = @JoinColumn(name = "document_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
-    private List<Item> items;
+    private Set<Item> items;
 
     @Column(name = "parentDocNo")
     private long parentDocNo;
@@ -126,13 +126,11 @@ public class Document extends AuditModel {
         this.version = version;
     }
 
-    public List<Item> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
+    public void setItems(Set<Item> items) { this.items = items; }
 
     public long getParentDocNo() {
         return parentDocNo;

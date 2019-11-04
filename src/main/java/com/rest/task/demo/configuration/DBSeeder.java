@@ -56,7 +56,7 @@ public class DBSeeder {
             Document doc = new Document();
             doc.setDatePadej(new Date(System.currentTimeMillis()));
             doc.setCreatedAt(new Date(System.currentTimeMillis()));
-            doc.setItems(Arrays.asList(item, item2));
+            doc.setItems(new HashSet<>(Arrays.asList(item, item2)));
             doc.setTotalVal(new BigInteger("56"));
             doc.setNote("Note");
             doc.setPayNote(payNote);
@@ -75,8 +75,8 @@ public class DBSeeder {
             documents.add(doc);
             payNote.setDocuments(documents);
 
-            item.setDocuments(Arrays.asList(doc));
-            item2.setDocuments(Arrays.asList(doc));
+            item.setDocuments(new HashSet<>(Arrays.asList(doc)));
+            item2.setDocuments(new HashSet<>(Arrays.asList(doc)));
 
             payNoteRepository.save(payNote);
 

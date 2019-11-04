@@ -5,7 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Milen on 28.10.2019 г..
@@ -21,7 +21,7 @@ public class Item extends AuditModel {
 
     @ManyToMany(mappedBy = "items")
     @JsonIgnore
-    private List<Document> documents;
+    private Set<Document> documents;
 
     @Column(name = "zaDelivID")
     private long zaDelivID;
@@ -51,11 +51,11 @@ public class Item extends AuditModel {
         return item_id;
     }
 
-    public List<Document> getDocuments() {
+    public Set<Document> getDocuments() {
         return documents;
     }
 
-    public void setDocuments(List<Document> documents) {
+    public void setDocuments(Set<Document> documents) {
         this.documents = documents;
     }
 

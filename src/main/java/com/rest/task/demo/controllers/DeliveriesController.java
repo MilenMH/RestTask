@@ -27,17 +27,39 @@ public class DeliveriesController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/deliveries",  produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = "/deliveries")
+    public Map<String, List<Document>> customerInformation(@RequestBody Map<String, Object> payload) {
+        List<Document> deliveriesByParamAndIds = this.deliveryService.getDeliveriesByIds(payload);
+
+        return  Collections.singletonMap("Invoices",deliveriesByParamAndIds);
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/rest/deliveries",  produces = MediaType.APPLICATION_JSON_VALUE)
     public Map getDeliveries() {
 
         return Collections.singletonMap("Invoices", this.deliveryService.getAll());
 
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/deliveries")
-    public Map<String, List<Document>> customerInformation(@RequestBody Map<String, Object> payload) {
-        List<Document> deliveriesByParamAndIds = this.deliveryService.getDeliveriesByIds(payload);
+    @RequestMapping(method = RequestMethod.POST, value = "/rest/deliveries",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map postDeliveries(@RequestBody Document payload) {
 
-        return  Collections.singletonMap("Invoices",deliveriesByParamAndIds);
+        return Collections.singletonMap("Invoice", this.deliveryService.postDelivery(payload));
+
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/rest/deliveries",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map putDeliveries(@RequestBody Document payload) {
+
+        return Collections.singletonMap("Invoice", this.deliveryService.putDelivery(payload));
+
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/rest/deliveries",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map deleteDeliveries(@RequestBody List<Document> payload) {
+
+        return Collections.singletonMap("Invoices", this.deliveryService.deleteDeliveries(payload));
+
     }
 }

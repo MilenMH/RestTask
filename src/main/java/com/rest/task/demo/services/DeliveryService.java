@@ -13,4 +13,10 @@ public interface DeliveryService {
     List<Document> getAll();
 
     List<Document> getDeliveriesByIds(Map<String, Object> payload);
-}
+
+    Document postDelivery(Document payload);
+
+    Document putDelivery(Document payload);
+
+    String deleteDeliveries(List<Document> payload);
+ }
